@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="highlight">#6D000000</color>
+    <color name="background">#FFA726</color>
+    <color name="backgroundDark">#F57C00</color>
+    <color name = "homeBkg">#FF699C</color>
+    <color name = "buttonNormal">#31D1E5</color>
+    <color name = "buttonHard">#03D1BD</color>
+    <color name = "buttonPastScores">#8E24AA</color>
+    <color name = "shadow">#77000000</color>
+    <color name = "white">#FFFFFF</color>
+</resources>
