@@ -32,7 +32,6 @@ public class AlertDialogFragment extends DialogFragment {
 
     public AlertDialogFragment() {
         super();
-        // Required empty public constructor
     }
 
     public static AlertDialogFragment newInstance(String title, String message) {

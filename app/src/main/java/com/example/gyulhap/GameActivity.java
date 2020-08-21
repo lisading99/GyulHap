@@ -21,24 +21,13 @@ import java.util.List;
 
 public class GameActivity extends AppCompatActivity implements
         AlertDialogFragment.UpdateGameActivity{
-    List<GyulHapSquares> gyulHapSquaresList;
     GyulHapSquares[][] gyulHapBoardSquares;
     ArrayList<ArrayList<Integer>> gyulHapBoardAnswers;
     Button hapBtn, clearBtn;
     boolean isValidSelection = false;
-    static boolean square1Selected = false;
-    static boolean square2Selected = false;
-    static boolean square3Selected = false;
-    static boolean square4Selected = false;
-    static boolean square5Selected = false;
-    static boolean square6Selected = false;
-    static boolean square7Selected = false;
-    static boolean square8Selected = false;
-    static boolean square9Selected = false;
     static boolean isOnBackPressed = false;
     long timeLeft = 120000;
     CountDownTimer countDownTimer;
-
     ImageView square1, square2, square3, square4, square5, square6, square7, square8, square9;
     static TextView timer, one, two, three, four, five, six, seven, eight, nine;
 
@@ -53,7 +42,6 @@ public class GameActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-
         square1 = findViewById(R.id.square1);
         square2 = findViewById(R.id.square2);
         square3 = findViewById(R.id.square3);
@@ -82,7 +70,6 @@ public class GameActivity extends AppCompatActivity implements
         GyulHapBoard gyulHapBoard = new GyulHapBoard(level);
         gyulHapBoardSquares = gyulHapBoard.getGyulHapBoard();
         gyulHapBoardAnswers = gyulHapBoard.getGyulHapBoardAnswers();
-
 
         // loop through all gyul hap squares and display
         GyulHapSquares square = null;
@@ -128,9 +115,6 @@ public class GameActivity extends AppCompatActivity implements
         }
 
         // listen for onclicks from user and save square as selection
-        // TODO: all actions within each square's onClick method should be abstracted into
-        // a new method
-
         gyulHapSquare1State = new GyulHapSquareStates(1, one, false);
         gyulHapSquare2State = new GyulHapSquareStates(2, two, false);
         gyulHapSquare3State = new GyulHapSquareStates(3, three, false);
@@ -153,27 +137,6 @@ public class GameActivity extends AppCompatActivity implements
         square1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                square1Selected = !square1Selected;
-//
-//                if (square1Selected) {
-//                    if (selectedSquaresList.size() != 3) {
-//                        selectedSquaresList.add(1);
-////                        square1.setColorFilter(getResources().getColor(R.color.highlight));
-//                        one.setTextColor(getResources().getColor(R.color.shadow));
-//
-//                    }
-//                    if (selectedSquaresList.size() == 3) {
-//                        // enable hap button
-//                        hapBtn.setEnabled(true);
-//                    }
-//                } else {
-//                    one.setTextColor(getResources().getColor(R.color.white));
-//                    //square1.clearColorFilter();
-//                    selectedSquaresList.remove(Integer.valueOf(1));
-//                    if (selectedSquaresList.size() < 3) {
-//                        hapBtn.setEnabled(false);
-//                    }
-//                }
                 handleSquareClickedActions(gyulHapSquare1State);
             }
         });
@@ -181,186 +144,48 @@ public class GameActivity extends AppCompatActivity implements
         square2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                square2Selected = !square2Selected;
-//
-//                if (square2Selected) {
-//                    if (selectedSquaresList.size() < 3) {
-//                        selectedSquaresList.add(2);
-////                        square2.setColorFilter(getResources().getColor(R.color.highlight));
-//                        two.setTextColor(getResources().getColor(R.color.buttonNormal));
-//                    }
-//                    if (selectedSquaresList.size() == 3) {
-//                        // enable hap button
-//                        hapBtn.setEnabled(true);
-//                    }
-//                } else {
-//                    square2.clearColorFilter();
-//                    selectedSquaresList.remove(Integer.valueOf(2));
-//                    if (selectedSquaresList.size() < 3) {
-//                        hapBtn.setEnabled(false);
-//                    }
-//                }
                 handleSquareClickedActions(gyulHapSquare2State);
             }
         });
         square3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                square3Selected = !square3Selected;
-//                if (square3Selected) {
-//                    if (selectedSquaresList.size() < 3) {
-//                        selectedSquaresList.add(3);
-//                        square3.setColorFilter(getResources().getColor(R.color.highlight));
-//                    }
-//                    if (selectedSquaresList.size() == 3) {
-//                        // enable hap button
-//                        hapBtn.setEnabled(true);
-//                    }
-//                } else {
-//                    square3.clearColorFilter();
-//                    selectedSquaresList.remove(Integer.valueOf(3));
-//                    if (selectedSquaresList.size() < 3) {
-//                        hapBtn.setEnabled(false);
-//                    }
-//                }
                 handleSquareClickedActions(gyulHapSquare3State);
             }
         });
         square4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                square4Selected = !square4Selected;
-//                if (square4Selected) {
-//                    if (selectedSquaresList.size() < 3) {
-//                        selectedSquaresList.add(4);
-//                        square4.setColorFilter(getResources().getColor(R.color.highlight));
-//                    }
-//                    if (selectedSquaresList.size() == 3) {
-//                        // enable hap button
-//                        hapBtn.setEnabled(true);
-//                    }
-//                } else {
-//                    square4.clearColorFilter();
-//                    selectedSquaresList.remove(Integer.valueOf(4));
-//                    if (selectedSquaresList.size() < 3) {
-//                        hapBtn.setEnabled(false);
-//                    }
-//                }
                 handleSquareClickedActions(gyulHapSquare4State);
             }
         });
         square5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                square5Selected = !square5Selected;
-//                if (square5Selected) {
-//                    if (selectedSquaresList.size() < 3) {
-//                        selectedSquaresList.add(5);
-//                        square5.setColorFilter(getResources().getColor(R.color.highlight));
-//                    }
-//                    if (selectedSquaresList.size() == 3) {
-//                        // enable hap button
-//                        hapBtn.setEnabled(true);
-//                    }
-//                } else {
-//                    square5.clearColorFilter();
-//                    selectedSquaresList.remove(Integer.valueOf(5));
-//                    if (selectedSquaresList.size() < 3) {
-//                        hapBtn.setEnabled(false);
-//                    }
-//                }
                 handleSquareClickedActions(gyulHapSquare5State);
             }
         });
         square6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                square6Selected = !square6Selected;
-//                if (square6Selected) {
-//                    if (selectedSquaresList.size() < 3) {
-//                        selectedSquaresList.add(6);
-//                        square6.setColorFilter(getResources().getColor(R.color.highlight));
-//                    }
-//                    if (selectedSquaresList.size() == 3) {
-//                        // enable hap button
-//                        hapBtn.setEnabled(true);
-//                    }
-//                } else {
-//                    square6.clearColorFilter();
-//                    selectedSquaresList.remove(Integer.valueOf(6));
-//                    if (selectedSquaresList.size() < 3) {
-//                        hapBtn.setEnabled(false);
-//                    }
-//                }
                 handleSquareClickedActions(gyulHapSquare6State);
             }
         });
         square7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                square7Selected = !square7Selected;
-//                if (square7Selected) {
-//                    if (selectedSquaresList.size() < 3) {
-//                        selectedSquaresList.add(7);
-//                        square7.setColorFilter(getResources().getColor(R.color.highlight));
-//                    }
-//                    if (selectedSquaresList.size() == 3) {
-//                        // enable hap button
-//                        hapBtn.setEnabled(true);
-//                    }
-//                } else {
-//                    square7.clearColorFilter();
-//                    selectedSquaresList.remove(Integer.valueOf(7));
-//                    if (selectedSquaresList.size() < 3) {
-//                        hapBtn.setEnabled(false);
-//                    }
-//                }
                 handleSquareClickedActions(gyulHapSquare7State);
             }
         });
         square8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                square8Selected = !square8Selected;
-//                if (square8Selected) {
-//                    if (selectedSquaresList.size() < 3) {
-//                        selectedSquaresList.add(8);
-//                        square8.setColorFilter(getResources().getColor(R.color.highlight));
-//                    }
-//                    if (selectedSquaresList.size() == 3) {
-//                        // enable hap button
-//                        hapBtn.setEnabled(true);
-//                    }
-//                } else {
-//                    square8.clearColorFilter();
-//                    selectedSquaresList.remove(Integer.valueOf(8));
-//                    if (selectedSquaresList.size() < 3) {
-//                        hapBtn.setEnabled(false);
-//                    }
-//                }
                 handleSquareClickedActions(gyulHapSquare8State);
             }
         });
         square9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                square9Selected = !square9Selected;
-//                if (square9Selected) {
-//                    if (selectedSquaresList.size() < 3) {
-//                        selectedSquaresList.add(9);
-//                        square9.setColorFilter(getResources().getColor(R.color.highlight));
-//                    }
-//                    if (selectedSquaresList.size() == 3) {
-//                        // enable hap button
-//                        hapBtn.setEnabled(true);
-//                    }
-//                } else {
-//                    square9.clearColorFilter();
-//                    selectedSquaresList.remove(Integer.valueOf(9));
-//                    if (selectedSquaresList.size() < 3) {
-//                        hapBtn.setEnabled(false);
-//                    }
-//                }
                 handleSquareClickedActions(gyulHapSquare9State);
             }
         });
@@ -438,49 +263,14 @@ public class GameActivity extends AppCompatActivity implements
     }
 
     private void clearAll() {
-        int squareIndex;
         for (int m = 0; m < gyulHapSquareStates.size(); m++) {
-            boolean selectedSquare = gyulHapSquareStates.get(m).getSquareSelected();
             gyulHapSquareStates.get(m).getSquareNumText().setTextColor(
                     getResources().getColor(R.color.white));
-//            squareIndex = selectedSquaresList.get(m);
-//            switch (squareIndex) {
-//                case 1:
-//                    square1.clearColorFilter();
-//                    square1Selected = false;
-//                case 2:
-//                    square2.clearColorFilter();
-//                    square2Selected = false;
-//                case 3:
-//                    square3.clearColorFilter();
-//                    square3Selected = false;
-//                case 4:
-//                    square4.clearColorFilter();
-//                    square4Selected = false;
-//                case 5:
-//                    square5.clearColorFilter();
-//                    square5Selected = false;
-//                case 6:
-//                    square6.clearColorFilter();
-//                    square6Selected = false;
-//                case 7:
-//                    square7.clearColorFilter();
-//                    square7Selected = false;
-//                case 8:
-//                    square8.clearColorFilter();
-//                    square8Selected = false;
-//                case 9:
-//                    square9.clearColorFilter();
-//                    square9Selected = false;
-//            }
         }
-
         // reset squares selection list
         selectedSquaresList = new ArrayList<>();
-
         // reset hapBtn back to disabled
         hapBtn.setEnabled(false);
-
         isValidSelection = false;
     }
 
@@ -506,13 +296,10 @@ public class GameActivity extends AppCompatActivity implements
                 "Quit game", "Would you like to quit the current game?"
         );
         alertDialogFragment.show(getSupportFragmentManager(), "dialog");
-
-//        finish();
     }
 
     private void startCountDownTimer() {
         // start timer for 120 second seconds
-
       countDownTimer =  new CountDownTimer(timeLeft, 1000) {
             public void onTick(long millisUntilFinished) {
                 timer.setText("seconds remaining: " + millisUntilFinished / 1000);

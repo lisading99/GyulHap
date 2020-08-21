@@ -23,7 +23,6 @@ public class ResultActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // inside your activity (if you did not enable transitions in your theme)
         getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
         // set an exit transition
         getWindow().setEnterTransition(new Slide());
@@ -35,9 +34,7 @@ public class ResultActivity extends AppCompatActivity {
         gyulHapBoardAnswers = (ArrayList<ArrayList<Integer>>)
                 getIntent().getSerializableExtra("gyulHapBoardAnswers");
 
-
         // display correct answers user got right
-
         int selectedSquaresCorrectSize = selectedSquaresCorrect.size();
         String[] answersFromUser = new String[selectedSquaresCorrectSize];
         for (int i = 0; i < selectedSquaresCorrect.size(); i++) {
@@ -49,27 +46,26 @@ public class ResultActivity extends AppCompatActivity {
                     second + ", " + third;
 
         }
-
         ArrayAdapter<String> itemsAdapter =
                 new ArrayAdapter<String>(this, R.layout.results_list, answersFromUser);
         ListView listView = (ListView) findViewById(R.id.userAnswersList);
         try {
             listView.setAdapter(itemsAdapter);
         } catch (Exception e) {
-
         }
 
         // display answers they missed
         // determine combinations user did not get
-
         int missingAnswersSize = gyulHapBoardAnswers.size() - selectedSquaresCorrectSize;
         String[] missingAnswers = new String[missingAnswersSize];
         boolean matches = false;
+        int missingAnswersCounter = 0;
         for (int m = 0; m < gyulHapBoardAnswers.size(); m++) {
             Collections.sort(gyulHapBoardAnswers.get(m));
             for (int n = 0; n < selectedSquaresCorrectSize; n++) {
                 if (gyulHapBoardAnswers.get(m).equals(selectedSquaresCorrect.get(n))) {
                     matches = true;
+                    break;
                 }
             }
             if (! matches) {
@@ -79,7 +75,8 @@ public class ResultActivity extends AppCompatActivity {
 
                 missingAnswers[m] = first + ", " + second +
                             ", " + third;
-
+                missingAnswersCounter++;
+                matches = false;
             }
         }
 
@@ -91,7 +88,6 @@ public class ResultActivity extends AppCompatActivity {
         } catch (Exception e) {
 
         }
-        // congrats if all correct
         if (missingAnswersSize == 0) {
             userResultsText.setText("Congrats! You have discovered all the haps :)");
             userResultsText.setTextSize(30);
@@ -104,7 +100,5 @@ public class ResultActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         finish();
-//        Intent intent = new Intent(this, MainActivity.class);
-//        startActivity(intent);
     }
 }

@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
         hard = findViewById(R.id.hard);
         pastScores = findViewById(R.id.pastScores);
 
-
         normal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
