@@ -32,8 +32,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         gyulHapTitle = findViewById(R.id.gyulHapTitle);
         normal = findViewById(R.id.normal);
-        hard = findViewById(R.id.hard);
-        pastScores = findViewById(R.id.pastScores);
 
         normal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,24 +39,6 @@ public class MainActivity extends AppCompatActivity {
                 // start game with normal level
                 Intent intent = new Intent(MainActivity.this, GameActivity.class);
                 intent.putExtra("level", "normal");
-                startActivity(intent);
-            }
-        });
-
-        hard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // start game with hard level
-                Intent intent = new Intent(MainActivity.this, GameActivity.class);
-                intent.putExtra("level", "hard");
-                startActivity(intent);
-            }
-        });
-
-        pastScores.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, BestScoreActivity.class);
                 startActivity(intent);
             }
         });

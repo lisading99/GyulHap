@@ -304,11 +304,7 @@ public class GyulHapBoard {
     }
 
     public GyulHapSquares[][] getGyulHapBoard() {
-        if (level.contentEquals("HARD")) {
-            createHardGyulHapBoard();
-        } else {
-            createGyulHapBoard();
-        }
+        createGyulHapBoard();
         return gyulHapBoard;
     }
 
